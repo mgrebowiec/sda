@@ -1,4 +1,4 @@
-package mg.testowanie.pesel;
+package pl.sda.mg.testowanie.pesel;
 
 import java.time.LocalDate;
 import java.util.Objects;

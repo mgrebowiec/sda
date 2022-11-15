@@ -1,4 +1,4 @@
-package mg.testowanie.pesel;
+package pl.sda.mg.testowanie.pesel;
 
 import org.junit.jupiter.api.Test;
 

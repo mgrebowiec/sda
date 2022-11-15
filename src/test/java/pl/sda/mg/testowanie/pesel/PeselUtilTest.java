@@ -1,4 +1,4 @@
-package mg.testowanie.pesel;
+package pl.sda.mg.testowanie.pesel;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,6 +26,52 @@ class PeselUtilTest {
         assertNotNull(calculatedBirthDate);
         assertEquals(LocalDate.of(1984, 9, 30), calculatedBirthDate);
     }
+
+    @Test
+    void shouldReturnNullForNullPesel() {
+
+        //when
+        LocalDate calculatedBirthDate = PeselUtil.getBirthDate(null);
+
+        //then
+        assertNull(calculatedBirthDate);
+    }
+
+    @Test
+    void shouldReturnNullForEmptyPesel() {
+
+        //when
+        LocalDate calculatedBirthDate = PeselUtil.getBirthDate("");
+
+        //then
+        assertNull(calculatedBirthDate);
+    }
+
+    @Test
+    void shouldReturnNullForTooLongPesel() {
+        String pesel = "840930111111";
+
+        //when
+        LocalDate calculatedBirthDate = PeselUtil.getBirthDate(pesel);
+
+        //then
+        assertNull(calculatedBirthDate);
+    }
+
+    @Test
+    void shouldReturnNullForTooShortPesel() {
+        String pesel = "8409301111";
+
+        //when
+        LocalDate calculatedBirthDate = PeselUtil.getBirthDate(pesel);
+
+        //then
+        assertNull(calculatedBirthDate);
+    }
+
+    // ------------------------------------------------------------------------------------------------
+    // PARAMETRIZED TESTS
+    // ------------------------------------------------------------------------------------------------
 
     @ParameterizedTest
     @ValueSource(strings = {"84093011111", "84093022222"})
